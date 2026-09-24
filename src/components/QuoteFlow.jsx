@@ -53,6 +53,7 @@ export default function QuoteFlow({ initialService = '', source = 'website' }) {
     email: '',
     additionalInformation: '',
   });
+  const [dateSkipped, setDateSkipped] = useState(false);
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState('idle'); /* idle | submitting | done | error */
   const [serverErrors, setServerErrors] = useState({});
@@ -70,7 +71,7 @@ export default function QuoteFlow({ initialService = '', source = 'website' }) {
     if (s === 0 && !data.service) e.service = 'Please choose what you need help with.';
     if (s === 1 && !data.projectType) e.projectType = 'Please choose a project type.';
     if (s === 2 && !data.enquiryType) e.enquiryType = 'Please choose how we can help.';
-    if (s === 3 && !data.preferredDate) e.preferredDate = 'Please choose a preferred date.';
+    if (s === 3 && !data.preferredDate && !dateSkipped) e.preferredDate = 'Please choose a preferred date, or select Not sure yet.';
     if (s === 5) {
       if (!data.name || data.name.trim().length < 2) e.name = 'Please enter your full name.';
       const digits = (data.phone.match(/\d/g) || []).length;
@@ -205,10 +206,21 @@ export default function QuoteFlow({ initialService = '', source = 'website' }) {
               className="field-input"
               value={data.preferredDate}
               min={new Date().toISOString().slice(0, 10)}
-              onChange={(e) => set('preferredDate')(e.target.value)}
+              onChange={(e) => { set('preferredDate')(e.target.value); setDateSkipped(false); }}
             />
           </label>
           {errors.preferredDate && <p className="field-error">{errors.preferredDate}</p>}
+          <button
+            type="button"
+            className={`qf-skip ${dateSkipped ? 'qf-skip-active' : ''}`}
+            onClick={() => {
+              const skipping = !dateSkipped;
+              setDateSkipped(skipping);
+              if (skipping) set('preferredDate')('');
+            }}
+          >
+            {dateSkipped ? '✓ No set date — we will confirm timing with you' : 'Not sure yet'}
+          </button>
         </fieldset>
       ) : step === 4 ? (
         <fieldset className="qf-step">

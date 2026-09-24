@@ -1083,3 +1083,20 @@ address { font-style: normal; }
   .svc-body { padding-left: 30px; }
   .mini-list { grid-template-columns: 1fr; }
 }
+
+.qf-skip {
+  margin-top: 4px;
+  background: none;
+  border: 0;
+  padding: 8px 0;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--grey);
+  cursor: pointer;
+  text-decoration: underline;
+}
+.qf-skip:hover { color: var(--red-dark); }
+.qf-skip-active { color: var(--red-dark); }
