@@ -46,7 +46,7 @@ export default function SeamlessGutters() {
         </div>
       </section>
 
-      <CTASection />
+      <CTASection quoteHref="#gutter-enquiry" />
     </>
   );
 }

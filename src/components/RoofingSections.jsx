@@ -435,7 +435,7 @@ export function FAQSection({ title = 'Roofing questions, answered' }) {
 
 /* ---------- Final CTA ---------- */
 
-export function CTASection() {
+export function CTASection({ quoteHref = '/contact' }) {
   return (
     <section className="cta-band">
       <div className="wrap">
@@ -446,7 +446,7 @@ export function CTASection() {
           consultation.
         </p>
         <div className="cta-actions">
-          <Btn to="/contact" variant="primary">Request a Quote</Btn>
+          <Btn to={quoteHref} variant="primary">Request a Quote</Btn>
           <Btn
             href={`tel:+27${BUSINESS.phones[0].replace(/^0/, '').replace(/\s/g, '')}`}
             variant="ghost-light"
