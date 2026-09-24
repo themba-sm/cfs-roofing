@@ -3,14 +3,13 @@ import { BUSINESS, TRUST_PILLARS } from '../data/site.js';
 import { Btn, Eyebrow, SectionHeading, Reveal, TrussDiagram } from '../components/ui.jsx';
 import {
   ServicesAccordion,
-  SheetingFlashingSection,
-  TileSystemsSection,
   ChromadekSection,
   DomesticCommercialSection,
   TrustSection,
   FAQSection,
   CTASection,
 } from '../components/RoofingSections.jsx';
+import { ProductRangeBand } from '../components/ProductCatalog.jsx';
 
 export default function Home() {
   return (
@@ -96,9 +95,8 @@ export default function Home() {
       {/* ---------- Services ---------- */}
       <ServicesAccordion intro="Eight service areas, from the truss up. Select any service for details." />
 
-      {/* ---------- Materials highlights (condensed) ---------- */}
-      <SheetingFlashingSection />
-      <TileSystemsSection />
+      {/* ---------- Product range (links into the Roofing catalogs) ---------- */}
+      <ProductRangeBand />
       <ChromadekSection />
 
       {/* ---------- Domestic + commercial ---------- */}

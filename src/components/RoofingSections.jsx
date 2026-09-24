@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { BUSINESS, SERVICES, DOMESTIC_SCOPE, COMMERCIAL_FOCUS, TILE_MAKERS, METAL_COVERINGS, METAL_MATERIALS, SHEETING_FLASHING, CHROMADEK, TRUST_PILLARS, FAQS } from '../data/site.js';
+import { BUSINESS, SERVICES, DOMESTIC_SCOPE, COMMERCIAL_FOCUS, CHROMADEK, TRUST_PILLARS, FAQS } from '../data/site.js';
 import { Btn, SectionHeading, Reveal, Eyebrow } from './ui.jsx';
 
 /* ---------- 01–08 service accordion system ---------- */
@@ -65,113 +65,6 @@ export function ServicesAccordion({ intro }) {
   );
 }
 
-/* ---------- Sheeting & flashing ---------- */
-
-export function SheetingFlashingSection() {
-  return (
-    <section className="section section-grey" id="sheeting-flashing">
-      <div className="wrap">
-        <div className="split">
-          <div>
-            <SectionHeading
-              num="M/01"
-              eyebrow="Sheeting & flashing"
-              title="Sheeting & flashing"
-              intro="Sheeting and flashing products supplied and installed alongside roof coverings."
-            />
-            <div className="chip-grid">
-              {SHEETING_FLASHING.map((item) => (
-                <span key={item} className="chip">{item}</span>
-              ))}
-            </div>
-          </div>
-          <figure className="split-figure">
-            <img
-              src="/media/metal-sheeting.jpg"
-              alt="IBR metal roof sheeting on a commercial building"
-              loading="lazy"
-              width="800" height="800"
-            />
-            <figcaption>IBR sheeting profile — illustrative imagery</figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ---------- Concrete roof tile systems ---------- */
-
-export function TileSystemsSection() {
-  return (
-    <section className="section" id="roof-tiles">
-      <div className="wrap">
-        <SectionHeading
-          num="M/02"
-          eyebrow="Concrete roof tiles"
-          title="Concrete roof tile systems"
-          intro="C.F.S. Roofing & Gutters installs concrete roof tiles from various manufacturers, including Marley, Lafarge/Monier Roofing, Brickor and Coverland."
-        />
-        <div className="tile-makers">
-          {Object.entries(TILE_MAKERS).map(([maker, profiles]) => (
-            <div key={maker} className="tile-maker">
-              <p className="tile-maker-name">{maker}</p>
-              <ul className="tile-list">
-                {profiles.map((p) => (
-                  <li key={p}>{p}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-        <p className="footnote">
-          Tile profiles installed as supplied by the respective manufacturers. Current profile
-          availability and colour options are confirmed per project.
-        </p>
-      </div>
-    </section>
-  );
-}
-
-/* ---------- Metal roof coverings ---------- */
-
-export function MetalCoveringsSection() {
-  return (
-    <section className="section section-dark" id="metal-coverings">
-      <div className="wrap">
-        <div className="split split-reverse">
-          <div>
-            <SectionHeading
-              light
-              num="M/03"
-              eyebrow="Metal roof coverings"
-              title="Metal roof coverings"
-              intro="Metal roof coverings installed for residential, industrial and commercial buildings."
-            />
-            <ul className="metal-list">
-              {METAL_COVERINGS.map((m) => (
-                <li key={m}>{m}</li>
-              ))}
-            </ul>
-            <p className="p-light section-note">
-              Installed in materials including {METAL_MATERIALS.join(', ')}.
-            </p>
-          </div>
-          <figure className="split-figure">
-            <img
-              src="/media/metal-sheeting.jpg"
-              alt="Metal roof sheeting installation on a building roof"
-              loading="lazy"
-              width="800" height="800"
-            />
-            <figcaption>Metal sheeting — illustrative imagery</figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 /* ---------- Chromadek feature ---------- */
 
 const CHROMADEK_SWATCH = {
@@ -188,7 +81,7 @@ export function ChromadekSection() {
       <div className="wrap">
         <SectionHeading
           light
-          num="M/04"
+          num="C/01"
           eyebrow="Chromadek"
           title="Chromadek sheeting"
           intro="Chromadek is an arc coil-coated steel product, supplied in a range of colours and paint systems."
@@ -223,93 +116,6 @@ export function ChromadekSection() {
           Product information as supplied by the manufacturer. Colour availability and paint-system
           specification are confirmed per project.
         </p>
-      </div>
-    </section>
-  );
-}
-
-/* ---------- Laminated timber beams ---------- */
-
-export function BeamsSection() {
-  return (
-    <section className="section" id="lam-beams">
-      <div className="wrap">
-        <div className="split">
-          <figure className="split-figure">
-            <img
-              src="/media/laminated-beams.jpg"
-              alt="Laminated timber beams forming a vaulted ceiling structure"
-              loading="lazy"
-              width="800" height="800"
-            />
-            <figcaption>Laminated timber beams — illustrative imagery</figcaption>
-          </figure>
-          <div>
-            <SectionHeading
-              num="M/05"
-              eyebrow="Laminated timber beams"
-              title="Laminated timber beams"
-              intro="A natural alternative to steel or concrete, made by gluing timber together under pressure and heat. The resulting product is strong, stable and rigid."
-            />
-            <ul className="point-list">
-              <li>High weight-to-strength ratio</li>
-              <li>Dimensional stability</li>
-              <li>Load carrying capacity</li>
-              <li>Fire resistance</li>
-              <li>Structural engineering capability</li>
-            </ul>
-            <p className="footnote">
-              Beams are supplied and installed as a project-specific structural element.
-              Engineering requirements are confirmed per project.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ---------- Bargeboards & fascia ---------- */
-
-export function BargeFasciaSection() {
-  return (
-    <section className="section section-grey" id="barge-fascia">
-      <div className="wrap">
-        <div className="split split-reverse">
-          <div>
-            <SectionHeading
-              num="M/06"
-              eyebrow="Roofline elements"
-              title="Bargeboards & fascia boards"
-            />
-            <div className="rf">
-              <div className="rf-item">
-                <p className="rf-term">Bargeboards</p>
-                <p className="rf-def">
-                  Located at the gable end of the roof. They protect roof timbers and contribute to
-                  the appearance of the roofline.
-                </p>
-              </div>
-              <div className="rf-item">
-                <p className="rf-term">Fascia</p>
-                <p className="rf-def">
-                  Positioned beneath the roof edge and behind the eavestrough. Fascia can be clad
-                  with aluminium to protect the timber from deterioration while providing an
-                  aesthetic finish.
-                </p>
-              </div>
-            </div>
-          </div>
-          <figure className="split-figure">
-            <img
-              src="/media/fascia-roofline.jpg"
-              alt="Fascia board and bargeboard detail on a residential gable end"
-              loading="lazy"
-              width="800" height="800"
-            />
-            <figcaption>Fascia and bargeboard detail — illustrative imagery</figcaption>
-          </figure>
-        </div>
       </div>
     </section>
   );
