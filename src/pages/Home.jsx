@@ -60,7 +60,7 @@ export default function Home() {
       </section>
 
       {/* ---------- Editorial intro ---------- */}
-      <section className="section">
+      <section className="section section-dark blueprint">
         <div className="wrap split-editorial">
           <div className="editorial-label">
             <Eyebrow>Since 1994</Eyebrow>
@@ -105,7 +105,7 @@ export default function Home() {
       <DomesticCommercialSection />
 
       {/* ---------- Gallery teaser ---------- */}
-      <section className="section">
+      <section className="section section-dark blueprint">
         <div className="wrap">
           <div className="tease-head">
             <SectionHeading

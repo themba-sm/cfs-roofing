@@ -8,6 +8,7 @@ import Gallery from './pages/Gallery.jsx';
 import About from './pages/About.jsx';
 import Contact from './pages/Contact.jsx';
 import NotFound from './pages/NotFound.jsx';
+import FloatingActions from './components/FloatingActions.jsx';
 
 const ROUTES = {
   '/': Home,
@@ -29,6 +30,7 @@ export default function App() {
         <Page />
       </main>
       <Footer />
+      <FloatingActions />
     </>
   );
 }
