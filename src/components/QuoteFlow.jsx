@@ -63,7 +63,7 @@ export default function QuoteFlow({ initialService = '', source = 'website' }) {
     setErrors((e) => ({ ...e, [key]: undefined }));
   };
 
-  const lastStep = STEP_LABELS.length; /* index 6 = final input step */
+  const lastStep = STEP_LABELS.length - 1; /* index 6 = final input step */
   const progress = Math.round(((step + 1) / (lastStep + 1)) * 100);
 
   function validateStep(s) {
