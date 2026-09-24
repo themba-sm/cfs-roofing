@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Btn, Eyebrow, TrussDiagram } from '../components/ui.jsx';
+import QuoteFlow from '../components/QuoteFlow.jsx';
 import {
   ServicesAccordion,
   SheetingFlashingSection,
@@ -63,6 +64,20 @@ export default function Roofing() {
       <BargeFasciaSection />
       <DomesticCommercialSection />
       <TrustSection />
+      <section className="section" id="roofing-enquiry">
+        <div className="wrap wrap-narrow">
+          <div className="gutter-note">
+            <Eyebrow>Enquiries</Eyebrow>
+            <h2>Start a roofing enquiry</h2>
+            <p className="section-intro">
+              Tell us what you need and we'll get your enquiry to the C.F.S. Roofing &amp;
+              Gutters team.
+            </p>
+          </div>
+          <QuoteFlow initialService="Roofing" source="roofing page" />
+        </div>
+      </section>
+
       <CTASection />
     </>
   );
