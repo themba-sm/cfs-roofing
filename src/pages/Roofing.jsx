@@ -1,27 +1,27 @@
 import { useEffect } from 'react';
 import { Btn, Eyebrow, TrussDiagram } from '../components/ui.jsx';
 import QuoteFlow from '../components/QuoteFlow.jsx';
+import { ProductCatalogSection } from '../components/ProductCatalog.jsx';
 import {
   ServicesAccordion,
-  SheetingFlashingSection,
-  TileSystemsSection,
-  MetalCoveringsSection,
   ChromadekSection,
-  BeamsSection,
-  BargeFasciaSection,
   DomesticCommercialSection,
   TrustSection,
   CTASection,
 } from '../components/RoofingSections.jsx';
+import {
+  SHEETING_FLASHING_CATALOG,
+  MARLEY_CATALOG,
+  COVERLAND_CATALOG,
+  ALSO_SUPPLY_CATALOG,
+} from '../data/products.js';
 
 const SECTIONS = [
   { href: '#service-system', label: 'Service system' },
   { href: '#sheeting-flashing', label: 'Sheeting & Flashing' },
-  { href: '#roof-tiles', label: 'Roof Tiles' },
-  { href: '#metal-coverings', label: 'Metal Coverings' },
-  { href: '#chromadek', label: 'Chromadek' },
-  { href: '#lam-beams', label: 'Laminated Beams' },
-  { href: '#barge-fascia', label: 'Barge & Fascia' },
+  { href: '#marley-tiles', label: 'Marley Tile' },
+  { href: '#coverland-tiles', label: 'Coverland' },
+  { href: '#also-supply', label: 'We also supply & install' },
   { href: '#domestic-commercial', label: 'Domestic + Commercial' },
 ];
 
@@ -56,12 +56,51 @@ export default function Roofing() {
       <div id="service-system">
         <ServicesAccordion intro="Select any service for details." />
       </div>
-      <SheetingFlashingSection />
-      <TileSystemsSection />
-      <MetalCoveringsSection />
+
+      <ProductCatalogSection
+        id="sheeting-flashing"
+        num="M/01"
+        eyebrow="Sheeting & flashing"
+        title="Sheeting & Flashing"
+        grey
+        intro="Sheeting and flashing products supplied and installed alongside roof coverings. Colour options and paint systems are confirmed per project."
+        items={SHEETING_FLASHING_CATALOG}
+        footnote="Product imagery via the manufacturer's published product information. Sizes, colours and specifications are confirmed per project."
+      />
+
       <ChromadekSection />
-      <BeamsSection />
-      <BargeFasciaSection />
+
+      <ProductCatalogSection
+        id="marley-tiles"
+        num="M/02"
+        eyebrow="Concrete roof tiles"
+        title="Marley Tile"
+        intro="Concrete roof tiles supplied and installed from the Marley range of profiles."
+        items={MARLEY_CATALOG}
+        footnote="Tile profiles as supplied by the manufacturer. Current availability and colour options are confirmed per project."
+      />
+
+      <ProductCatalogSection
+        id="coverland-tiles"
+        num="M/03"
+        eyebrow="Concrete roof tiles"
+        title="Coverland"
+        grey
+        intro="Concrete roof tiles supplied and installed from the Coverland range of profiles."
+        items={COVERLAND_CATALOG}
+        footnote="Tile profiles as supplied by the manufacturer. Concrete tiles from other manufacturers, including Lafarge/Monier Roofing and Brickor, are also available on request. Availability and colour options are confirmed per project."
+      />
+
+      <ProductCatalogSection
+        id="also-supply"
+        num="M/04"
+        eyebrow="Structural & finishing products"
+        title="We also supply and install"
+        intro="Structural and finishing products supplied and installed as part of the roofing package."
+        items={ALSO_SUPPLY_CATALOG}
+        footnote="Product imagery representative of the products supplied. Sizes, treatments and engineering requirements are confirmed per project."
+      />
+
       <DomesticCommercialSection />
       <TrustSection />
       <section className="section" id="roofing-enquiry">
