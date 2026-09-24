@@ -31,17 +31,44 @@ export function RouterProvider({ children }) {
   );
 }
 
+function scrollToHashTarget(hash, attempt = 0) {
+  const el = document.getElementById(hash);
+  if (el) {
+    window.requestAnimationFrame(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+  } else if (attempt < 3) {
+    /* page may still be rendering after a client-side route change */
+    window.setTimeout(() => scrollToHashTarget(hash, attempt + 1), 120);
+  }
+}
+
 export function navigate(to, { scroll = true } = {}) {
   if (to.startsWith('http')) {
     window.open(to, '_blank', 'noopener');
     return;
   }
+  const hashIndex = to.indexOf('#');
+  const hash = hashIndex !== -1 ? to.slice(hashIndex + 1) : '';
+  const pathOnly = hashIndex !== -1 ? to.slice(0, hashIndex) : to;
+  const targetPath = pathOnly || window.location.pathname;
+  const samePage = targetPath === window.location.pathname;
+
+  if (hash && samePage) {
+    /* same-page hash jump: no route change, just update the URL and scroll */
+    window.history.pushState({}, '', to);
+    scrollToHashTarget(hash);
+    return;
+  }
+
   window.history.pushState({}, '', to);
   window.dispatchEvent(new PopStateEvent('popstate'));
   if (scroll) {
-    window.requestAnimationFrame(() => {
-      window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
-    });
+    if (hash) {
+      scrollToHashTarget(hash);
+    } else {
+      window.requestAnimationFrame(() => {
+        window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
+      });
+    }
   }
 }
 
