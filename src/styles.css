@@ -176,9 +176,20 @@ address { font-style: normal; }
   position: sticky;
   top: 0;
   z-index: 100;
+  border-bottom: 1px solid var(--line);
+  isolation: isolate;
+}
+/* Backdrop blur lives on a pseudo-element, not the header itself — a
+   backdrop-filter on the header would make it a containing block for its
+   position:fixed children (the mobile menu), trapping that full-screen
+   overlay inside the header's own ~65px box instead of the viewport. */
+.site-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
   background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--line);
 }
 
 .header-inner {
